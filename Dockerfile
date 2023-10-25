@@ -1,8 +1,6 @@
-FROM ubuntu:22.04
+FROM ubuntu:latest
 
 RUN apt update && \
-apt upgrade -y && \
-apt install -y tree && \
-rm -rf /var/lib/apt/lists/*
-
-ENTRYPOINT [ "/bin/bash" ]
+    apt upgrade -y && \
+    apt install -y tree && \
+    rm -rf /var/lib/apt/lists/*

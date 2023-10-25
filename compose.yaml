@@ -11,3 +11,14 @@ services:
       - "8000:80"
     volumes:
       - ./hey.txt:/usr/share/nginx/html/index.html
+  node:
+    image: node
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./:/home/node/app
+    ports:
+      - "5173:5173"
+    tty: true
