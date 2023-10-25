@@ -1,6 +1,7 @@
 services:
   roman:
     image: big_john
+    build: .
     volumes:
       - ./hey.txt:/mnt/heytilRoman.txt
     tty: true
