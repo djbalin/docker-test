@@ -3,14 +3,14 @@ services:
     image: big_john
     build: ./dockerfiles/ubuntu/
     volumes:
-      - ./hey.txt:/mnt/heytilRoman.txt
+      - ./misc/hey.txt:/mnt/heytilRoman.txt
     tty: true
   server:
     image: nginx
     ports:
-      - "8000:80"
+      - "80:80"
     volumes:
-      - ./hey.txt:/usr/share/nginx/html/index.html
+      - ./misc/hey.txt:/usr/share/nginx/html/index.html
   node:
     image: node
     user: node
