@@ -1,7 +1,7 @@
 services:
   roman:
     image: big_john
-    build: .
+    build: ./dockerfiles/ubuntu/
     volumes:
       - ./hey.txt:/mnt/heytilRoman.txt
     tty: true
@@ -13,12 +13,12 @@ services:
       - ./hey.txt:/usr/share/nginx/html/index.html
   node:
     image: node
-    user: "node"
+    user: node
     working_dir: /home/node/app
     environment:
       - NODE_ENV=development
     volumes:
-      - ./:/home/node/app
+      - ./:/home/node/app/
     ports:
       - "5173:5173"
     tty: true
