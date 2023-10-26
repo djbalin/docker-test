@@ -22,3 +22,17 @@ services:
     ports:
       - "5173:5173"
     tty: true
+  mysql:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_USER=roman
+      - MYSQL_PASSWORD=roman
+      - MYSQL_DATABASE=docker-test
+    volumes:
+      - roman:/var/lib/mysql/
+volumes:
+  roman:
