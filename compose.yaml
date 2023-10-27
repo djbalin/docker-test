@@ -34,5 +34,8 @@ services:
       - MYSQL_DATABASE=docker-test
     volumes:
       - roman:/var/lib/mysql/
+      - ./misc/jans_sql_script.sql:/mnt/jans_sql_script.sql
+      - ./misc/jans_sql_query.sql:/mnt/jans_sql_query.sql
+      - ./misc/jans_sql_playground.sh:/mnt/jans_sql_playground.sh
 volumes:
   roman:
