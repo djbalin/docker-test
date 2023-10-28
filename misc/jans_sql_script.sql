@@ -28,7 +28,7 @@ create table person_language_relation
     id          int     not null auto_increment,
     person_id   int     not null,
     language_id int     not null,
-    is_lie      boolean not null default false,
+    is_lie      tinyint not null default 0,
     primary key (id),
     unique (person_id, language_id),
     foreign key (person_id) references person (id) on delete cascade,
@@ -72,7 +72,7 @@ values ((select id from person where first_name = 'Jan'), (select id from langua
 insert into person_language_relation (person_id, language_id)
 values ((select id from person where first_name = 'Jan'), (select id from language where language = 'German'));
 insert into person_language_relation (person_id, language_id, is_lie)
-values ((select id from person where first_name = 'Jan'), (select id from language where language = 'Greek'), true);
+values ((select id from person where first_name = 'Jan'), (select id from language where language = 'Greek'), 1);
 insert into person_language_relation (person_id, language_id)
 values ((select id from person where first_name = 'Roman'), (select id from language where language = 'Danish'));
 insert into person_language_relation (person_id, language_id)
@@ -100,7 +100,6 @@ values ((select id from person where first_name = 'Mathias'), (select id from la
 insert into person_language_relation (person_id, language_id)
 values ((select id from person where first_name = 'Mathias'), (select id from language where language = 'French'));
 insert into person_language_relation (person_id, language_id, is_lie)
-values ((select id from person where first_name = 'Mathias'), (select id from language where language = 'German'),
-        true);
+values ((select id from person where first_name = 'Mathias'), (select id from language where language = 'German'), 1);
 insert into person_language_relation (person_id, language_id)
 values ((select id from person where first_name = 'Mathias'), (select id from language where language = 'Spanish'));
