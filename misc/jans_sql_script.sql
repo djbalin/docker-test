@@ -30,13 +30,10 @@ create table person_language_relation
     language_id int     not null,
     is_lie      boolean not null default false,
     primary key (id),
-    unique (person_id, language_id)
+    unique (person_id, language_id),
+    foreign key (person_id) references person (id) on delete cascade,
+    foreign key (language_id) references language (id) on delete cascade
 );
-
-alter table person_language_relation
-    add constraint PERSON_RELATION foreign key (person_id) references person (id);
-alter table person_language_relation
-    add constraint LANGUAGE_RELATION foreign key (language_id) references language (id);
 
 insert into person (first_name, last_name, age)
 values ('Jan', 'Balin', 29);
