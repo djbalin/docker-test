@@ -1,7 +1,7 @@
 use dejlig_db;
 
 drop table if exists person;
-select 'CREATING TABLE Persons ...' as '';
+select 'CREATING TABLE person ...' as '';
 create table person
 (
     id         int          not null auto_increment,
@@ -9,11 +9,10 @@ create table person
     last_name  varchar(255) not null,
     age        int          not null,
     primary key (id)
-
 );
 
 drop table if exists language;
-select 'CREATING TABLE Languages ...' as '';
+select 'CREATING TABLE language ...' as '';
 create table language
 (
     id       int          not null auto_increment,
@@ -22,7 +21,7 @@ create table language
 );
 
 drop table if exists person_language_relation;
-select 'CREATING TABLE Speaks ...' as '';
+select 'CREATING TABLE person_language_relation ...' as '';
 create table person_language_relation
 (
     id          int     not null auto_increment,
@@ -36,70 +35,42 @@ create table person_language_relation
 );
 
 insert into person (first_name, last_name, age)
-values ('Jan', 'Balin', 29);
-insert into person (first_name, last_name, age)
-values ('Roman', 'Grygorenko', 33);
-insert into person (first_name, last_name, age)
-values ('Martin', 'Kedmenec', 27);
-insert into person (first_name, last_name, age)
-values ('Mathias', 'Rune Agüero Andersen', 30);
+values ('Jan', 'Balin', 29),
+       ('Roman', 'Grygorenko', 33),
+       ('Martin', 'Kedmenec', 27),
+       ('Mathias', 'Rune Agüero Andersen', 30);
 
 insert into language (language)
-values ('Danish');
-insert into language (language)
-values ('English');
-insert into language (language)
-values ('Ukrainian');
-insert into language (language)
-values ('Croatian');
-insert into language (language)
-values ('French');
-insert into language (language)
-values ('German');
-insert into language (language)
-values ('Russian');
-insert into language (language)
-values ('Greek');
-insert into language (language)
-values ('Spanish');
+values ('Danish'),
+       ('English'),
+       ('Ukrainian'),
+       ('Croatian'),
+       ('French'),
+       ('German'),
+       ('Russian'),
+       ('Greek'),
+       ('Spanish');
 
 insert into person_language_relation (person_id, language_id)
-values ((select id from person where first_name = 'Jan'), (select id from language where language = 'Danish'));
-insert into person_language_relation (person_id, language_id)
-values ((select id from person where first_name = 'Jan'), (select id from language where language = 'English'));
-insert into person_language_relation (person_id, language_id)
-values ((select id from person where first_name = 'Jan'), (select id from language where language = 'French'));
-insert into person_language_relation (person_id, language_id)
-values ((select id from person where first_name = 'Jan'), (select id from language where language = 'German'));
+values ((select id from person where first_name = 'Jan'), (select id from language where language = 'Danish')),
+       ((select id from person where first_name = 'Jan'), (select id from language where language = 'English')),
+       ((select id from person where first_name = 'Jan'), (select id from language where language = 'French')),
+       ((select id from person where first_name = 'Jan'), (select id from language where language = 'German')),
+       ((select id from person where first_name = 'Roman'), (select id from language where language = 'Danish')),
+       ((select id from person where first_name = 'Roman'), (select id from language where language = 'English')),
+       ((select id from person where first_name = 'Roman'), (select id from language where language = 'Ukrainian')),
+       ((select id from person where first_name = 'Roman'), (select id from language where language = 'French')),
+       ((select id from person where first_name = 'Roman'), (select id from language where language = 'Russian')),
+       ((select id from person where first_name = 'Martin'), (select id from language where language = 'Danish')),
+       ((select id from person where first_name = 'Martin'), (select id from language where language = 'English')),
+       ((select id from person where first_name = 'Martin'), (select id from language where language = 'Croatian')),
+       ((select id from person where first_name = 'Martin'), (select id from language where language = 'German')),
+       ((select id from person where first_name = 'Martin'), (select id from language where language = 'Russian')),
+       ((select id from person where first_name = 'Mathias'), (select id from language where language = 'Danish')),
+       ((select id from person where first_name = 'Mathias'), (select id from language where language = 'English')),
+       ((select id from person where first_name = 'Mathias'), (select id from language where language = 'French')),
+       ((select id from person where first_name = 'Mathias'), (select id from language where language = 'Spanish'));
+
 insert into person_language_relation (person_id, language_id, is_lie)
-values ((select id from person where first_name = 'Jan'), (select id from language where language = 'Greek'), 1);
-insert into person_language_relation (person_id, language_id)
-values ((select id from person where first_name = 'Roman'), (select id from language where language = 'Danish'));
-insert into person_language_relation (person_id, language_id)
-values ((select id from person where first_name = 'Roman'), (select id from language where language = 'English'));
-insert into person_language_relation (person_id, language_id)
-values ((select id from person where first_name = 'Roman'), (select id from language where language = 'Ukrainian'));
-insert into person_language_relation (person_id, language_id)
-values ((select id from person where first_name = 'Roman'), (select id from language where language = 'French'));
-insert into person_language_relation (person_id, language_id)
-values ((select id from person where first_name = 'Roman'), (select id from language where language = 'Russian'));
-insert into person_language_relation (person_id, language_id)
-values ((select id from person where first_name = 'Martin'), (select id from language where language = 'Danish'));
-insert into person_language_relation (person_id, language_id)
-values ((select id from person where first_name = 'Martin'), (select id from language where language = 'English'));
-insert into person_language_relation (person_id, language_id)
-values ((select id from person where first_name = 'Martin'), (select id from language where language = 'Croatian'));
-insert into person_language_relation (person_id, language_id)
-values ((select id from person where first_name = 'Martin'), (select id from language where language = 'German'));
-insert into person_language_relation (person_id, language_id)
-values ((select id from person where first_name = 'Martin'), (select id from language where language = 'Russian'));
-insert into person_language_relation (person_id, language_id)
-values ((select id from person where first_name = 'Mathias'), (select id from language where language = 'Danish'));
-insert into person_language_relation (person_id, language_id)
-values ((select id from person where first_name = 'Mathias'), (select id from language where language = 'English'));
-insert into person_language_relation (person_id, language_id)
-values ((select id from person where first_name = 'Mathias'), (select id from language where language = 'French'));
-insert into person_language_relation (person_id, language_id, is_lie)
-values ((select id from person where first_name = 'Mathias'), (select id from language where language = 'German'), 1);
-insert into person_language_relation (person_id, language_id)
-values ((select id from person where first_name = 'Mathias'), (select id from language where language = 'Spanish'));
+values ((select id from person where first_name = 'Jan'), (select id from language where language = 'Greek'), 1),
+       ((select id from person where first_name = 'Mathias'), (select id from language where language = 'German'), 1);
