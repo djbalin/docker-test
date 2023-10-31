@@ -1,7 +1,11 @@
-select "NOW ENJOYING ! Who speaks what??" as " ";
+use dejlig_db;
 
-select Persons.FirstName, Persons.LastName, Languages.languageName as Speaks 
-from Persons 
-    join Speaks on Speaks.PersonID = Persons.ID 
-    join Languages on Languages.ID = Speaks.LanguageID 
-order by Persons.FirstName;
+select 'NOW ENJOYING ! Who speaks what??' as '';
+select first_name,
+       last_name,
+       language as speaks,
+       is_lie
+from person
+         left join person_language_relation on person_language_relation.person_id = person.id
+         left join language on language.id = person_language_relation.language_id
+order by person.id;

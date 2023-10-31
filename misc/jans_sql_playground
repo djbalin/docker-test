@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -eu
+
+mysql -e 'source /mnt/jans_sql_script.sql' && \
+mysql -e 'source /mnt/jans_sql_query.sql'

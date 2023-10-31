@@ -14,7 +14,7 @@ services:
   node:
     image: node
     user: node
-    working_dir: /home/node/app
+    working_dir: /home/node/app/
     environment:
       - NODE_ENV=development
     volumes:
@@ -31,11 +31,11 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
       - MYSQL_USER=roman
       - MYSQL_PASSWORD=roman
-      - MYSQL_DATABASE=docker-test
+      - MYSQL_DATABASE=dejlig_db
     volumes:
       - roman:/var/lib/mysql/
-      - ./misc/jans_sql_script.sql:/mnt/jans_sql_script.sql
+      - ./misc/jans_sql_playground:/mnt/jans_sql_playground
       - ./misc/jans_sql_query.sql:/mnt/jans_sql_query.sql
-      - ./misc/jans_sql_playground.sh:/mnt/jans_sql_playground.sh
+      - ./misc/jans_sql_script.sql:/mnt/jans_sql_script.sql
 volumes:
   roman:
